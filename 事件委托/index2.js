@@ -1,4 +1,4 @@
-const list = document.getElementById('list')
+const ullist = document.getElementById('ullist')
 const li1 = document.getElementById('li1')
 
 function addEvent(elem,type,selector,cb){
@@ -33,6 +33,6 @@ addEvent(li1,'click',function(e){
     alert(this.innerHTML);
 })
 
-// addEvent(list,'click','li',(e)=>{
+// addEvent(ullist,'click','li',(e)=>{
 //     alert(e.target.innerHTML);
 // })
