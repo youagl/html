@@ -1,6 +1,11 @@
 const ullist = document.getElementById('ullist')
-const li1 = document.getElementById('li1')
-
+const lis = document.getElementsByTagName('li')[0];
+/**
+    elem：父节点元素
+    type：事件类型
+    selector：目标元素
+    cb：事件处理回调函数
+ */
 function addEvent(elem,type,selector,cb){
 
     console.log(cb);
@@ -29,10 +34,10 @@ function addEvent(elem,type,selector,cb){
 //踩坑：用箭头函数会导致this的指向改变
 // 这里传this.innerHTML，封装函数里使用call来改变指向
 // 这里传e.target.innerHTML，封装函数里直接调用cb()
-addEvent(li1,'click',function(e){
+addEvent(lis,'click',function(e){
     alert(this.innerHTML);
 })
 
-// addEvent(ullist,'click','li',(e)=>{
-//     alert(e.target.innerHTML);
-// })
+addEvent(ullist,'click','li',(e)=>{
+    alert(e.target.innerHTML);
+})

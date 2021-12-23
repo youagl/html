@@ -24,13 +24,13 @@
     </style>
 </head>
 <body>
-    <!-- 阻止默认事件 -->
+    <!--实例1 阻止默认事件 -->
     <a id="link" target="_blank" href="https://github.com/youagl">GitHub-blog</a>
     <form>
         <label for="check1">Checkbox:</label>
         <input type="checkbox" id="check1"/>
     </form>
-    <!-- 阻止事件冒泡 -->
+    <!--实例2 阻止事件冒泡 -->
     <div id="div3" onClick="alert('3')">
         <div id="div2" onClick="alert('2')">
             <div id="div1" href="#" onClick="alert('1')">
@@ -44,18 +44,7 @@
         <li id="li3">项目3</li>
         <button id="btn">新增</button>
     </ul>
-    <!-- 实例1 事件委托 -->
+    <!-- 实例3 事件委托 -->
     <script src="./index.js"></script>
-    <!-- 实例2 封装事件委托函数 -->
-    <!-- <script src="./index2.js"></script> -->
-    <!-- 实例3 promise 异步编程的解决方案 -->
-    <!-- <img src="" alt="这是一张图片">
-    <div calss="divClass"></div>
-    <script src="./promise_loadImg.js"></script>
-    <style>
-        .divClass{
-            border:none
-        }
-    </style> -->
 </body>
 </html>

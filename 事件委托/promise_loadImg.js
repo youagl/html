@@ -4,7 +4,8 @@ function loadImg(src){
     //3.定义成功onload和失败onerror的方法
 
     const promise = new Promise((resolve,reject)=>{
-        const img = document.getElementsByTagName('img');
+        // const img = document.getElementsByTagName('img');
+        let img = new Image();
         img.onload = function(){
             resolve(img)
         }
@@ -16,11 +17,18 @@ function loadImg(src){
     })
     return promise;
 }
-
-// https://lf3-cdn-tos.bytescm.com/obj/static/xitu_juejin_web/7abc2b532f725d394feaf0141547ade7.svg
-const src = 'https://lf3-cdn-tos.bytescm.com/obj/static/xitu_juejin_web/7abc2b532f725d394feaf0141547ade7.svg';
-loadImg(src).then(img=>{
+let url1 = "https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=3293635140,3955114282&fm=26&gp=0.jpg"
+let url2 = "https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=1019333328,1858047370&fm=26&gp=0.jpg"
+let url3 = "https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=4226468334,723383513&fm=26&gp=0.jpg"
+loadImg(url1).then(img=>{
     console.log(`加载成功！${img}`);
-}).catch(e=>{
+    return loadImg(url2);
+}).then(img=>{
+    console.log(`加载成功！${img}`);
+    return loadImg(url3);
+}).then(img=>{
+    console.log(`加载成功！${img}`);
+})
+.catch(e=>{
     console.log(e);
 })
