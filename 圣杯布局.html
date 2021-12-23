@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1#0">
+    <title>圣杯布局</title>
+    <style>
+        body{
+            min-width: 500px;
+        }
+        div{
+            text-align: center;
+        }
+        #header{
+            background-color: rgb(180, 208, 233);
+        }
+        #content{
+            padding-left: 300px;
+            padding-right: 200px;
+        }
+        #content #left{
+            position: relative;
+            background-color: aquamarine;
+            width: 300px;
+            margin-left: -100%;
+            right: 300px;;
+        }
+        #content #center{
+            background-color: burlywood;
+            width: 100%;
+        }
+        #content #right{
+            background-color: cornflowerblue;
+            /* 后面两句可以看成是 right的模块在外界看来是没有宽度的 */
+            width: 200px;
+            margin-right: -200px;
+        }
+        #footer{
+            background-color: rgb(180, 208, 233);
+            clear: both;
+        }
+        #content .column{
+            float: left;
+        }
+    </style>
+</head>
+<body>
+    <div id="header">header</div>
+    <div id="content">
+        <div id="center" class="column">center</div>
+        <div id="left" class="column">left</div>
+        <div id="right" class="column">right</div>
+    </div>
+    <div id="footer">footer</div>
+</body>
+</html>

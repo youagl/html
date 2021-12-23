@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>垂直居中（在水平居中的例子上补写）</title>
+    <style>
+        .box{
+            height: 130px;
+            border:3px solid darkseagreen;
+        }
+        .box1{
+            text-align: center;
+        }
+        .box2 .item{
+            width: 100px;
+            background-color:antiquewhite;
+            margin:0 auto;
+        }
+        .box3,.box4,.box5{
+            position: relative;
+        }
+        .box3 .item{
+            background-color:antiquewhite;
+            width: 150px;
+            height: 100px;
+            position: absolute;
+            /* 设置具体的值让其居中 缺陷：需要知道该元素的宽高 */
+            left:50%;
+            top: 50%;
+            margin-left: -75px;
+            margin-top: -50px;
+        }
+        .box4 .item{
+            background-color:antiquewhite;
+            width: 150px;
+            height: 100px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            /* css的属性 transform 需考虑低版本浏览器的兼容性 */
+            transform: translate(-50%,-50%);
+        }
+        .box5 .item{
+            background-color:antiquewhite;
+            width: 150px;
+            height: 100px;
+            position: absolute;
+            /* 这种方式是最好的，不用指定固定的值，也无需考虑低版本浏览器的兼容性 */
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            margin:auto;
+        }
+    </style>
+</head>
+<body>
+    <!-- 行内 inline 元素 -->
+    <div class="box box1">
+        <span>Content</span>
+    </div>
+    <!-- 块级 block 元素 -->
+    <div class="box box2">
+        <div class="item">Item</div>
+    </div>
+    <!-- absolute 定位元素 left+margin-left 负值 -->
+    <div class="box box3">
+        <div class="item">Item</div>
+    </div>
+    <!-- absolute 定位元素 transform-->
+    <div class="box box4">
+        <div class="item">Item</div>
+    </div>
+    <!-- absolute 定位元素 transform-->
+    <div class="box box5">
+        <div class="item">Item</div>
+    </div>
+</body>
+</html>

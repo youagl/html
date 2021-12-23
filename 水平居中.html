@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>水平居中</title>
+    <style>
+        .box{
+            height: 130px;
+            border:3px solid darkseagreen;
+        }
+        .box1{
+            text-align: center;
+        }
+        .box2 .item{
+            width: 100px;
+            background-color:antiquewhite;
+            margin:0 auto;
+        }
+        .box3,.box4,.box5{
+            position: relative;
+        }
+        .box3 .item{
+            background-color:antiquewhite;
+            width: 150px;
+            height: 100px;
+            position: absolute;
+            /* 设置具体的值让其居中 缺陷：需要知道该元素的宽高 */
+            left:50%;
+            margin-left: -75px;
+        }
+    </style>
+</head>
+<body>
+    <!-- 行内 inline 元素 -->
+    <div class="box box1">
+        <span>Content</span>
+    </div>
+    <!-- 块级 block 元素 -->
+    <div class="box box2">
+        <div class="item">Item</div>
+    </div>
+    <!-- absolute 定位元素 left+margin-left 负值 -->
+    <div class="box box3">
+        <div class="item">Item</div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>flex属性</title>
+    <style>
+        .box {
+            width: 150px;
+            height: 150px;
+            border: 5px solid #ccc;
+            padding: 15px;
+            box-sizing: border-box;
+            border-radius: 10px;
+            display: flex;
+            justify-content: space-between;
+        }
+        .item{
+            display:block;
+	        width:20px;
+            height:20px;
+            background-color:#666;
+            border-radius:50%;
+        }
+        /* .item:nth-child(2){
+            align-self: center;
+        }
+        .item:nth-child(3){
+            align-self: flex-end;
+        } */
+        /* 前后两种方式都可以 */
+        /* .item:nth-of-type(2){
+            align-self: center;
+        }
+        .item:nth-of-type(3){
+            align-self: flex-end;
+        } */
+    </style>
+</head>
+<body>
+    <div class="box">
+        <span class="item"></span>
+        <span class="item"></span>
+        <span class="item"></span>
+    </div>
+</body>
+</html>
