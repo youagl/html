@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>index</title>
+    <style>
+        .imgPreview{
+            height: 130px;
+            width: 130px;
+        }
+    </style>
+</head>
+<body>
+    <input type="file" id="file" class="file" multiple="multiple">
+    <img class="imgPreview" src="" alt="">
+    <button onclick="onSubmit()">提交</button>
+    <script>
+        // document.querySelector('img').hidden = 'true';
+        document.querySelector('.file').addEventListener('change', function(e) {
+          //1.可以通过this拿到这个file的DOM元素
+          console.log(this)
+          //1.  e 函数事件参数对象中也有这个file的DOM元素对象。使用e.target也可以直接拿到
+          console.log(e.target)
+          //对开发人员屏蔽，所以直接 必须调用这个文件的DOM对象的files属性，返回一个数组
+          let files = e.target.files
+          console.log(files)
+          previewFile(files[0]);
+        document.querySelector('img').src = URL.createObjectURL(files[0]);
+          // console.log(files.item(0))
+          // console.log(files[0])
+        })
+        //预览
+        function previewFile(file){
+            let reader;
+            if(file){
+                // 创建文件流对象
+                reader = new FileReader();
+                reader.readAsDataURL(file);
+            }
+            // 捕获 转换完毕
+            reader.onload = e =>{
+                // 转换后的base64编码就在e.target.result里面，直接放到img的src即可
+                document.querySelector('img').src = e.target.result;
+            }
+        }
+        //onSubmit
+        function onSubmit(){
+            let files = document.querySelector('.file').files;
+            // 判断一下是否有文件
+          if (!files.length) return
+          // 上传文件 创建FormData
+          let formData = new FormData()
+        //   upFile就是后台接收的key
+        //   由于files对象是一个类数组FileList，只有length属性，故不可使用forEach，for in等遍历方式   
+          for (let i = 0; i < files.length; i++) {
+            // formData中的append方法 如果已有相同的键，则会追加成为一个数组  注意:这里需要使用formData.getAll()获取
+            formData.append('upFile', files[i], files[i].name)
+          }
+        //    要使用formData.getAll方法才能获取到值   
+          console.log(formData.getAll('upFile'));
+        //   将formdata发送到后台即可
+        //   我用的 axios.post('url', formData)
+        }
+    </script>
+</body>
+</html>
