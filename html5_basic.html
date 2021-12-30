@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- 文档的编码格式 -->
+    <meta charset="UTF-8">
+    <!-- 兼容IE 以当前IE浏览器所支持的最高版本模式来渲染页面 -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- viewport 适配移动端，可以控制视图窗口的大小和比例 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>html基础篇</title>
+    <style media="screen">
+        .pr {width: 106px;height: 6px;background: #ededed;}
+        progress::-webkit-progress-bar {background: #ededed;border-radius: 8px;}
+        progress::-webkit-progress-value {background: #06c5d8;border-radius: 8px;}
+        .pr.alert::-webkit-progress-value {background: red;}
+    </style>
+</head>
+<body>
+    <h1>This is a heading</h1>
+    <!-- 分割 -->
+    <hr />
+    <h2>This is a heading</h2>
+    <h3>This is a heading</h3>
+    <nav>导航栏</nav>
+    <aside>侧边栏</aside>
+    <section>区块 有语义化的div</section>
+    <main>主要区域</main>
+    <article>主要内容</article>
+    <footer>底部</footer>
+    <details>
+        <p>详情</p>
+        <p>通知</p>
+    </details>
+    <p id="p1"></p>
+    <!-- 音频 controls 控制面板 autoplay 自动播放 loop 循环播放 -->
+    <audio src="song.mp3" controls autoplay loop="true"></audio>
+    <!-- 视频 -->
+    <video src="aa.mp4" controls width="340" height="300"></video>
+    <!-- 最佳实践 HTML5 + object + embed 应对浏览器兼容问题-->
+    <video width="320" height="240" controls="constrols">
+        <source src="movie.mp4" type="video/mp4" />
+        <source src="movie.ogg" type="video/ogg" />
+        <source src="movie.webm" type="video/webm" />
+        <object data="movie.mp4" width="320" height="240">
+            <embed src="movie.swf" width="320" height="240">
+        </object>
+    </video>
+    <form action="/demo/html/action_page.php" validate>
+        <fieldset>
+            <legend>html5表单和表单属性</legend>
+            <label for="email">Enter your email:</label>
+            <input type="email" id="email" name="email" multiple required autofocus>
+            <br><br>
+            <label for="email">Enter your phone:</label>
+            <input type="text" id="phone" name="phone" pattern="^(+86)?\d{10}$" required autofocus>
+            <br><br>
+            <input type="number" max=3 min=0 value=2>
+            <br><br>
+            <!-- 失去焦点触发 -->
+            <label for="email">Enter your url:</label>
+            <input type="url" onblur="alert('oooo')">
+            <br><br>
+            <input type="search">
+            <input type="range" max=100 min=0 value=10>
+            <input type="time">
+            <input type="datetime-local">
+            <input type="color"><br><br>
+            <input type="submit">
+        </fieldset>
+      </form>
+      <i>我是i标签</i>
+      <em>我是em标签</em>
+      <label for="mobile">Number:</label>
+      <input type="text" id="mobile"/>
+      <hr>
+      <!-- progress max表示任务的进度 value表示完成进度 -->
+      <progress class="pr" value="14" max="100"></progress>
+      <meter high="100" low="0" value="80"></meter>
+    <script>
+        document.getElementById('p1').innerHTML = document.compatMode;//CSS1Compat
+        var value = document.getElementsByClassName('pr')[0].value;
+        if (value<15) {
+            var div = document.getElementsByClassName('pr')[0];
+            div.className = "pr alert";
+        }
+    </script>
+</body>
+</html>
