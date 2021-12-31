@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>webWorker</title>
+</head>
+<body>
+    <p>计数:<output id="result"></output></p>
+    <button onclick="startWorker()">开始Worker</button>
+    <button onclick="stopWorker()">结束Worker</button>
+    <p>在本地运行会报错，因为Worker不可读取本地系统文件内的资源。只能读取网络资源，且需要同源</p>
+    <br/><br/>
+    <script>
+        var w;
+        function startWorker(){
+            if(typeof(Worker) !== "undefined"){
+                if(typeof(w) == "undefined"){
+                    w = new Worker("/webWorker.js");
+                }
+                w.onmessage = function(e){
+                    document.getElementById('result').innerHTML=e.data;
+                }
+                w.onerror = function(e){
+                    document.getElementById('result').innerHTML=e.message;
+                    stopWorker();
+                }
+            }else{
+                document.getElementById('result').innerHTML="Sorry,your browser does not support Web Workers..."
+            }
+        }
+        function stopWorker(){
+            w.terminate();
+            w = undefined;//复用
+        }
+    </script>
+</body>
+</html>
